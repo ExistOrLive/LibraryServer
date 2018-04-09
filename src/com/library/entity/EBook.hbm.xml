@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-25 23:55:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.library.entity.EBook" table="EBOOK">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" not-null="true"/>
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="URL" not-null="true"/>
+        </property>
+        <property name="ab" type="java.lang.String">
+            <column name="AB" />
+        </property>
+    </class>
+</hibernate-mapping>

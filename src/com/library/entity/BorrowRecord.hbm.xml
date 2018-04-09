@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-25 23:55:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.library.entity.BorrowRecord" table="BORROWRECORD">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="readerId" class="com.library.entity.Reader" fetch="join">
+            <column name="READERID" />
+        </many-to-one>
+        <many-to-one name="bookItemId" class="com.library.entity.BookItem" fetch="join">
+            <column name="BOOKITEMID" />
+        </many-to-one>
+        <property name="type" type="int">
+            <column name="TYPE" not-null="true" default="1"/>
+        </property>
+        <property name="borrowDate" type="java.util.Date">
+            <column name="BORROWDATE" not-null="true"/>
+        </property>
+        <property name="preReturnDate" type="java.util.Date">
+            <column name="PRERETURNDATE" not-null="true"/>
+        </property>
+        <property name="returnDate" type="java.util.Date">
+            <column name="RETURNDATE" />
+        </property>
+        <property name="status" type="int">
+            <column name="STATUS" not-null="true" default="1"/>
+        </property>
+    </class>
+</hibernate-mapping>

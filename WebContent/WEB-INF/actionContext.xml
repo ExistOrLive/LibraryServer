@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Spring配置文件的Schema信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    
+  
+    
+     <bean id="readerAction" class="com.library.action.ReaderAction" >
+       <property name="readerService" ref="readerService"/>
+    </bean>
+    
+    <bean id="bookAction" class="com.library.action.BookAction" >
+       <property name="bookService" ref="bookService"/>
+    </bean>
+    
+    <bean id="bookItemAction" class="com.library.action.BookItemAction">
+      <property name="bookItemService" ref="bookItemService"/>
+    </bean>
+    
+     <bean id="commentAction" class="com.library.action.CommentAction"  >
+       <property name="commentService" ref="commentService"/>
+    </bean> 
+    
+    <bean id="borrowRecordAction" class="com.library.action.BorrowRecordAction">
+        <property name="borrowRecordService" ref="borrowRecordService"/>
+    </bean>
+    
+    <bean id="eBookAction" class="com.library.action.EBookAction">
+       <property name="eBookService" ref="eBookService"/>
+    </bean>
+    
+    <bean id="collectionAction" class="com.library.action.CollectionAction">
+        <property name="collectionService" ref="collectionService"/>
+    </bean>
+    
+    <bean id="downloadAction" class="com.library.action.DownloadAction">
+    </bean>
+    
+</beans>

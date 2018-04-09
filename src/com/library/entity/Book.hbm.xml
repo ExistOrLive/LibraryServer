@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-25 23:55:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.library.entity.Book" table="BOOK">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" not-null="true"/>
+        </property>
+        <property name="author" type="java.lang.String">
+            <column name="AUTHOR" not-null="true"/>
+        </property>
+        <property name="series" type="java.lang.String">
+            <column name="SERIES" />
+        </property>
+        <property name="publisher" type="java.lang.String">
+            <column name="PUBLISHER" />
+        </property>
+        <property name="price" type="double">
+            <column name="PRICE" />
+        </property>
+        <property name="binding" type="java.lang.String">
+            <column name="BINDING" />
+        </property>
+        <property name="ISBN" type="java.lang.String">
+            <column name="ISBN" />
+        </property>
+        <property name="subject" type="java.lang.String">
+            <column name="SUBJECT" />
+        </property>
+        <property name="classification" type="java.lang.String">
+            <column name="CLASSIFICATION" />
+        </property>
+        <property name="ab" type="java.lang.String">
+            <column name="AB" />
+        </property>
+        <property name="douban_Ab" type="java.lang.String">
+            <column name="DOUBAN_AB" />
+        </property>
+        
+        <set name="items" table="BOOKITEM" inverse="true" lazy="true" cascade="delete-orphan">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="com.library.entity.BookItem" />
+        </set>
+        <set name="comments" table="COMMENT" inverse="true" lazy="true" cascade="delete-orphan">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="com.library.entity.Comment" />
+        </set>
+    </class>
+</hibernate-mapping>

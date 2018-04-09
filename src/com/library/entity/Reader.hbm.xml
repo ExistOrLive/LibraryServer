@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-25 23:55:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.library.entity.Reader" table="READER">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="10" unique="true" not-null="true"/>
+        </property>
+        <property name="stuNum" type="java.lang.String">
+            <column name="STUNUM" length="9" unique="true"/>
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" not-null="true"/>
+        </property>
+        <property name="telNum" type="java.lang.String">
+            <column name="TELNUM" unique="true" not-null="true" length="11"/>
+        </property>
+        <set name="records" table="BORROWRECORD" inverse="true" lazy="true" cascade="delete-orphan">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="com.library.entity.BorrowRecord" />
+        </set>
+        <set name="comments" table="COMMENT" inverse="true" lazy="true" cascade="delete-orphan">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="com.library.entity.Comment" />
+        </set>
+    </class>
+</hibernate-mapping>

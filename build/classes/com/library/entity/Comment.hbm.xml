@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-25 23:55:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.library.entity.Comment" table="COMMENT">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="readerId" class="com.library.entity.Reader" fetch="join">
+            <column name="READERID" />
+        </many-to-one>
+        <many-to-one name="bookId" class="com.library.entity.Book" fetch="join">
+            <column name="BOOKID" />
+        </many-to-one>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" not-null="true"/>
+        </property>
+        <property name="commentDate" type="java.util.Date">
+            <column name="COMMENTDATE" not-null="true"/>
+        </property>
+        <property name="up" type="int">
+            <column name="UP" default="0"/>
+        </property>
+        <property name="down" type="int">
+            <column name="DOWN" default="0"/>
+        </property>
+    </class>
+</hibernate-mapping>

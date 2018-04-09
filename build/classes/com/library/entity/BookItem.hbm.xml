@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-25 23:55:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.library.entity.BookItem" table="BOOKITEM">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bookId" class="com.library.entity.Book" fetch="join">
+            <column name="BOOKID" />
+        </many-to-one>
+        <property name="callNum" type="java.lang.String">
+            <column name="CALLNUM" not-null="true" />
+        </property>
+        <property name="barcode" type="java.lang.String">
+            <column name="BARCODE" not-null="true" />
+        </property>
+        <property name="volumn" type="java.lang.String">
+            <column name="VOLUMN" />
+        </property>
+        <property name="location" type="java.lang.String">
+            <column name="LOCATION" not-null="true" />
+        </property>
+        <property name="status" type="int">
+            <column name="STATUS" not-null="true" default="1"/>
+        </property>
+        <property name="returnDate" type="java.util.Date">
+            <column name="RETURNDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

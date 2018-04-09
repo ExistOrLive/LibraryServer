@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Spring配置文件的Schema信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    
+    <bean id="DAO" class="com.library.DAO.impl.IDAOImpl" abstract="true"> 
+      <property name="factory" ref="sessionFactory"/>
+    </bean>
+    
+    <bean id="readerDAO" class="com.library.DAO.impl.IReaderDAOImpl" parent="DAO">
+    
+    </bean>
+    <bean id="bookDAO" class="com.library.DAO.impl.IBookDAOImpl" parent="DAO"/>
+    
+    <bean id="bookItemDAO" class="com.library.DAO.impl.IBookItemDAOImpl" parent="DAO"/>
+    
+    <bean id="commentDAO" class="com.library.DAO.impl.ICommentDAOImpl" parent="DAO"/>
+    
+    <bean id="borrowRecordDAO" class="com.library.DAO.impl.IBorrowRecordDAOImpl" parent="DAO"/>
+    
+    <bean id="eBookDAO" class="com.library.DAO.impl.IEBookDAOImpl" parent="DAO"/>
+    
+    <bean id="collectionDAO" class="com.library.DAO.impl.ICollectionDAOImpl" parent="DAO"/>
+    
+    
+    <bean id="readerService" class="com.library.service.impl.ReaderServiceImpl">
+         <property name="readerDAO" ref="readerDAO"/>
+    </bean>
+    
+    <bean id="bookService" class="com.library.service.impl.BookServiceImpl">
+         <property name="bookDAO" ref="bookDAO"/>
+    </bean>
+    
+    <bean id="bookItemService" class="com.library.service.impl.BookItemServiceImpl">
+         <property name="bookItemDAO" ref="bookItemDAO"/>
+    </bean>
+    
+     <bean id="commentService" class="com.library.service.impl.CommentServiceImpl">
+           <property name="commentDAO" ref="commentDAO"/>
+     </bean>
+     
+     <bean id="borrowRecordService" class="com.library.service.impl.BorrowRecordServiceImpl">
+           <property name="borrowRecordDAO" ref="borrowRecordDAO"/>
+           <property name="bookItemDAO" ref="bookItemDAO"/>
+     </bean>
+     
+     <bean id="eBookService" class="com.library.service.impl.EBookServiceImpl">
+          <property name="eBookDAO" ref="eBookDAO"/>
+      </bean>
+      
+      <bean id="collectionService" class="com.library.service.impl.CollectionServiceImpl">
+          <property name="collectionDAO" ref="collectionDAO"/>
+      </bean>
+    
+    
+    
+ </beans> 
